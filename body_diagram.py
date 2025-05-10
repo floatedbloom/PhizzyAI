@@ -62,19 +62,40 @@ def render_body_diagram():
         # Find the body part name based on the clicked color
         hex_color = '%02x%02x%02x' % clicked_color[:3]
         body_part = MUSCLE_GROUPS.get(hex_color, "Unknown")
-
+        print("body data", body_data)
+        print("body part", body_part)
         if body_part in body_data:
             info = body_data[body_part]
-
-            @st.dialog(f"{body_part} Info")
-            def popup(body_part):
-                st.markdown(f"### {body_part}")
-                st.markdown(f"**Pain Points:** {', '.join(info['pain_points'])}")
-                st.markdown(f"**Pain Level:** {info['pain_level']}")
-                st.markdown(f"**Warnings:** {', '.join(info['warnings'])}")
-                st.markdown(f"**Exercises:** {', '.join(info['exercises'])}")
-            popup(body_part)
-               
+            st.write(f"You clicked on: {body_part}")
+            st.write(f"Pain Points: {', '.join(info['pain_points'])}")
+            st.write(f"Pain Level: {info['pain_level']}")
+            st.write(f"Warnings: {', '.join(info['warnings'])}")
+            st.write(f"Exercises: {', '.join(info['exercises'])}")
         else:
-            st.write(f"No information available for your {body_part}.")
+            st.write("No data available for this body part.")
 
+        # Update JSON: set pain_level to '8' for this muscle
+        if body_part in MUSCLE_GROUPS:
+            muscle_name = MUSCLE_GROUPS[hex_color]
+            if muscle_name in body_data:
+                body_data[muscle_name]['pain_level'] = '8'
+            else:
+                body_data[muscle_name] = {
+                    'pain_points': [],
+                    'pain_level': '8',
+                    'warnings': [],
+                    'exercises': []
+                }
+            with open("body.json", "w") as f:
+                json.dump(body_data, f, indent=2)
+            # Toggle selection
+            if muscle_name in st.session_state.selected_muscles:
+                st.session_state.selected_muscles.remove(muscle_name)
+            else:
+                st.session_state.selected_muscles.add(muscle_name)
+            st.experimental_rerun()
+            st.write(f"You clicked on: **{muscle_name.title()}**")
+
+#function to return pain points from highleted image
+def get_pain_points_from_image():
+    pass
