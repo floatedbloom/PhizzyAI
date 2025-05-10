@@ -65,10 +65,16 @@ def render_body_diagram():
 
         if body_part in body_data:
             info = body_data[body_part]
-            st.write(f"You clicked on: {body_part}")
-            st.write(f"Pain Points: {', '.join(info['pain_points'])}")
-            st.write(f"Pain Level: {info['pain_level']}")
-            st.write(f"Warnings: {', '.join(info['warnings'])}")
-            st.write(f"Exercises: {', '.join(info['exercises'])}")
+
+            @st.dialog(f"{body_part} Info")
+            def popup(body_part):
+                st.markdown(f"### {body_part}")
+                st.markdown(f"**Pain Points:** {', '.join(info['pain_points'])}")
+                st.markdown(f"**Pain Level:** {info['pain_level']}")
+                st.markdown(f"**Warnings:** {', '.join(info['warnings'])}")
+                st.markdown(f"**Exercises:** {', '.join(info['exercises'])}")
+            popup(body_part)
+               
         else:
-            st.write("No data available for this body part.")
+            st.write(f"No information available for your {body_part}.")
+

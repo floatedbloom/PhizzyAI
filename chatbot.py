@@ -49,17 +49,19 @@ async def generate_chat_analysis(user_input: str, json: str) -> str:
 def get_audio_input():
     recognizer = sr.Recognizer()
     with sr.Microphone() as source:
-        st.write("Listening... Please speak now 🗣️")
-        try:
-            recognizer.adjust_for_ambient_noise(source)
-            audio = recognizer.listen(source, phrase_time_limit=5)
-            st.write("Processing your input...")
-            text = recognizer.recognize_google(audio)
-            return text
-        except sr.UnknownValueError:
-            st.write("Sorry, I could not understand the audio.")
-        except sr.RequestError as e:
-            st.write(f"Could not request results; {e}")
+        with st.empty():
+            st.write("Listening... Please speak now 🗣️")
+            try:
+                recognizer.adjust_for_ambient_noise(source)
+                audio = recognizer.listen(source, phrase_time_limit=5)
+                st.write("Processing your input...")
+                text = recognizer.recognize_google(audio)
+                st.write("")
+                return text
+            except sr.UnknownValueError:
+                st.write("Sorry, I could not understand the audio.")
+            except sr.RequestError as e:
+                st.write(f"Could not request results; {e}")
     return ""
 
 def chatbot():
