@@ -1,10 +1,12 @@
 import streamlit as st
+import asyncio
 from body_diagram import render_body_diagram
 from chatbot import chatbot
 
 # Set page configuration
 st.set_page_config(
     page_title="PhizzyAI - Your Virtual Physical Therapist",
+    page_icon="💪",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
