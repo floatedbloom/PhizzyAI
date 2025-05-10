@@ -1,17 +1,14 @@
 import streamlit as st
 import streamlit_image_coordinates as ic
 import os
-from PIL import Image, ImageDraw
+from PIL import Image
 
 def render_body_diagram():
-    image_path = os.path.join("media", "front.webp")
-    # Load the image
-    image = Image.open(image_path).convert("RGBA")
-    # Set a fixed display size
-    display_width = 600
-    display_height = 900  # Adjust as needed for your image aspect ratio
-    image = image.resize((display_width, display_height))
-    # Get click coordinates
+    image_path = os.path.join("media", "front.png")
+    mask_path = os.path.join("media", "frontmask.png")
+    display_width, display_height = 600, 900
+    image = Image.open(image_path).convert("RGBA").resize((display_width, display_height))
+    mask = Image.open(mask_path).convert("RGB").resize((display_width, display_height))
     st.write("Click on the body diagram below:")
     result = ic.streamlit_image_coordinates(
         image_path,
@@ -19,12 +16,17 @@ def render_body_diagram():
         width=display_width,
         height=display_height,
     )
-    # If clicked, draw a red ellipse to highlight a muscle group
     if result is not None:
-        draw = ImageDraw.Draw(image)
-        x, y = result['x'], result['y']  # Use coordinates as provided
-        muscle_width, muscle_height = 60, 30
-        draw.ellipse((x-muscle_width//2, y-muscle_height//2, x+muscle_width//2, y+muscle_height//2), fill=(255,0,0,128), outline=(255,0,0,255))
+        x, y = result['x'], result['y']
+        clicked_color = mask.getpixel((x, y))
+        image_pixels = image.load()
+        mask_pixels = mask.load()
+        for i in range(display_width):
+            for j in range(display_height):
+                if mask_pixels[i, j] == clicked_color:
+                    # Highlight color (e.g., semi-transparent red)
+                    r, g, b, a = image_pixels[i, j]
+                    image_pixels[i, j] = (255, 0, 0, 180)
         st.write(f"You clicked at: x={x}, y={y}")
         st.image(image, use_container_width=True)
     else:

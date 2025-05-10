@@ -8,6 +8,7 @@ from tools import generate_chat_analysis, get_audio_input
 st.title("PhizzyAI")
 
 st.write("Placeholder for the body diagram")
+render_body_diagram()
 
 def chatbot():
     chatbox = st.container(height=800)
