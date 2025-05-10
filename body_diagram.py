@@ -99,15 +99,28 @@ def render_body_diagram():
         hex_color = '%02x%02x%02x' % clicked_color[:3]
         body_part = MUSCLE_GROUPS.get(hex_color, "Unknown")
 
-        if body_part in body_data:
-            @st.dialog(f"{body_part} Info")
-            def popup(body_part):
-                info = body_data[body_part]
-                st.write(f"Pain Points: {', '.join(info['pain_points'])}")
-                st.write(f"Pain Level: {info['pain_level']}")
-                st.write(f"Warnings: {', '.join(info['warnings'])}")
-                st.write(f"Exercises: {', '.join(info['exercises'])}")
-            popup(body_part)
+        if body_part in body_data and st.session_state.get("last_clicked") != (x, y):
+            # Update the last clicked position
+            st.session_state["last_clicked"] = (x, y)
+
+            # Use session state to track popup visibility
+            popup_key = f"popup_{body_part}"
+            st.session_state[popup_key] = True  # Reset the flag to allow the popup to show again
+
+            if st.session_state[popup_key]:
+                @st.dialog(f"{body_part} Info")
+                def popup():
+                    info = body_data[body_part]
+                    st.write(f"Pain Points: {', '.join(info['pain_points'])}")
+                    st.write(f"Pain Level: {info['pain_level']}")
+                    st.write(f"Warnings: {', '.join(info['warnings'])}")
+                    st.write(f"Exercises: {', '.join(info['exercises'])}")
+
+                popup()
+
+                # Clear the popup flag after it is displayed
+                st.session_state[popup_key] = False
+
         else:
             st.write("No data available for this body part.")
 

@@ -40,22 +40,22 @@
   },
   "right thigh": {
     "pain_points": [
-      "mild to moderate soreness on front of thigh after swimming with fins",
-      "tenderness when contracting quadriceps (knee extension)",
-      "muscle fatigue or cramping during kicking"
+      "mild to moderate soreness on the front of the thigh",
+      "tenderness when contracting the quadriceps (knee extension)",
+      "muscle fatigue or cramping during activities such as kicking or walking"
     ],
     "pain_level": "4",
     "warnings": [
-      "If you notice significant swelling, bruising, or can\u2019t bear weight, seek medical attention immediately.",
+      "If you notice significant swelling, bruising, or cannot bear weight, seek medical attention immediately.",
       "If pain worsens or does not improve after 5\u20137 days of rest and self-care, consult a healthcare professional.",
-      "If you develop numbness, tingling or severe weakness in the leg, seek prompt evaluation."
+      "If you develop numbness, tingling, or severe weakness in the leg, seek prompt evaluation."
     ],
     "exercises": [
       "Standing Quadriceps Stretch: Stand on one leg, pull the opposite heel toward your glutes, keeping knees close. Hold 20\u201330 seconds, repeat 3 times per side.",
       "Foam Roller Quadriceps Massage: Lie face down, place a foam roller under your right thigh, and roll gently from hip to knee for 1\u20132 minutes.",
-      "Straight Leg Raises: Lie on your back, one knee bent, other leg straight. Lift the straight leg to hip height, hold 2 seconds, then lower slowly. Do 2\u20133 sets of 10\u201315 reps.",
-      "Prone Hip Flexor Stretch: Lie face down, prop on forearms. Gently squeeze your right glute to tilt pelvis, stretching front of thigh. Hold 20\u201330 seconds, repeat 3 times.",
-      "Bodyweight Squats (Pain-Free Range): Stand feet hip-width, squat only as far as you can without pain, return to standing. Perform 2\u20133 sets of 10\u201312 reps."
+      "Straight Leg Raises: Lie on your back with one knee bent and the other leg straight. Lift the straight leg to hip height, hold for 2 seconds, then lower slowly. Perform 2\u20133 sets of 10\u201315 reps.",
+      "Prone Hip Flexor Stretch: Lie face down, prop on forearms, gently squeeze your right glute to tilt the pelvis and stretch the front of your thigh. Hold 20\u201330 seconds, repeat 3 times.",
+      "Bodyweight Squats (Pain-Free Range): Stand feet hip-width apart, squat only as far as you can without pain, then return to standing. Perform 2\u20133 sets of 10\u201312 reps."
     ]
   },
   "HISTORY": {},
@@ -77,6 +77,44 @@
       "Isometric Adduction Press: Stand or sit, press your palms together in front of your sternum at shoulder height, hold 5 seconds, relax. Repeat 10 times.",
       "Scapular Retraction: Sit or stand tall, squeeze shoulder blades together as if pinching a pencil between them, hold 5 seconds, release. Repeat 10\u201315 times.",
       "Cross-Body Shoulder Stretch: Bring your left arm across your chest and use your right hand to gently pull it closer. Hold 20\u201330 seconds, repeat 3 times."
+    ]
+  },
+  "left calf": {
+    "pain_points": [
+      "no current pain or discomfort in the calf"
+    ],
+    "pain_level": "1",
+    "warnings": [
+      "If pain returns, increases, or you feel tightness/cramping again, reduce activity and follow RICE (rest, ice, compression, elevation).",
+      "If you experience sudden swelling, redness, warmth, or develop fever in the calf, seek medical evaluation to rule out deep vein thrombosis.",
+      "If you hear a popping sound at any point, cannot bear weight, or notice bruising, seek immediate medical attention."
+    ],
+    "exercises": [
+      "Gastrocnemius Stretch: Stand facing a wall, place both hands on it, step the affected leg back with knee straight and heel on the floor. Lean forward until you feel a stretch in the upper calf. Hold 20\u201330 seconds, repeat 3 times.",
+      "Soleus Stretch: From the same position, slightly bend the back knee while keeping heel down. Lean forward to target the lower calf. Hold 20\u201330 seconds, repeat 3 times.",
+      "Eccentric Calf Raises: Stand on a step or sturdy block with heels off the edge. Rise up onto both toes, transfer weight to the affected leg, then slowly lower the heel below step level over 3\u20134 seconds. Perform 2\u20133 sets of 10\u201312 reps.",
+      "Single-Leg Balance: Stand barefoot on the affected leg, keeping a slight bend in the knee. Hold for 30 seconds, focus on even weight distribution. Repeat 2\u20133 times.",
+      "Foam Roller Massage: Sit with foam roller under the calf. Gently roll from just below the knee to just above the ankle for 1\u20132 minutes, pausing on any tender spots."
+    ]
+  },
+  "left shoulder": {
+    "pain_points": [
+      "dull ache over the top and front of the shoulder",
+      "stiffness or discomfort when lifting the arm overhead",
+      "recurring discomfort after activity"
+    ],
+    "pain_level": "4",
+    "warnings": [
+      "If you experience sharp or worsening pain during any movement, stop immediately and rest.",
+      "If pain persists beyond 5\u20137 days or you notice decreased strength or range of motion, consult a healthcare professional.",
+      "If you develop numbness, tingling, a feeling of instability, or significant swelling, seek prompt medical evaluation."
+    ],
+    "exercises": [
+      "Pendulum Swings: Lean forward, support your non-painful arm on a table, let the painful arm hang, and gently swing in small circles for 1\u20132 minutes once a day.",
+      "Scapular Retraction (Wall Angels): Stand with back and arms against a wall in a \u201cW\u201d shape. Slide arms up into a \u201cY,\u201d keeping contact with the wall. Perform 2\u20133 sets of 8\u201312 reps.",
+      "Resisted External Rotation: Secure a light resistance band at waist height. With elbow bent 90\u00b0 at your side, rotate your forearm outward. Do 2\u20133 sets of 10\u201315 reps.",
+      "Doorway Pec Stretch: Place your left forearm on a doorframe at shoulder height and gently lean forward until you feel a stretch in the front of your shoulder/chest. Hold 20\u201330 seconds, repeat 3 times.",
+      "Pain-Free Shoulder Elevations: Slowly lift your arms forward (flexion) and to the side (abduction) only as far as comfortable. Perform 2\u20133 sets of 10\u201315 reps each."
     ]
   }
 }
