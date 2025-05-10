@@ -57,7 +57,7 @@ def render_body_diagram():
         for i in range(display_width):
             for j in range(display_height):
                 if mask_pixels[i, j] == clicked_color:
-                    image_pixels[i, j] = (255, 0, 0, 180)  # Highlight color
+                    pass  # Remove the logic that changes the clicked body part to red
 
         # Find the body part name based on the clicked color
         hex_color = '%02x%02x%02x' % clicked_color[:3]
@@ -69,7 +69,8 @@ def render_body_diagram():
 
             # Use session state to track popup visibility
             popup_key = f"popup_{body_part}"
-            st.session_state[popup_key] = True  # Reset the flag to allow the popup to show again
+            if popup_key not in st.session_state:
+                st.session_state[popup_key] = True  # Initialize the flag
 
             if st.session_state[popup_key]:
                 @st.dialog(f"{body_part} Info")
@@ -80,10 +81,11 @@ def render_body_diagram():
                     st.write(f"Warnings: {', '.join(info['warnings'])}")
                     st.write(f"Exercises: {', '.join(info['exercises'])}")
 
-                popup()
+                    # Add a close button to explicitly close the popup
+                    if st.button("Close"):
+                        st.session_state[popup_key] = False
 
-                # Clear the popup flag after it is displayed
-                st.session_state[popup_key] = False
+                popup()
 
         else:
             st.write("No data available for this body part.")

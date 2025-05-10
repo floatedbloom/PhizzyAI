@@ -98,23 +98,17 @@
     ]
   },
   "left shoulder": {
-    "pain_points": [
-      "dull ache over the top and front of the shoulder",
-      "stiffness or discomfort when lifting the arm overhead",
-      "recurring discomfort after activity"
-    ],
-    "pain_level": "4",
+    "pain_points": [],
+    "pain_level": "1",
     "warnings": [
-      "If you experience sharp or worsening pain during any movement, stop immediately and rest.",
-      "If pain persists beyond 5\u20137 days or you notice decreased strength or range of motion, consult a healthcare professional.",
-      "If you develop numbness, tingling, a feeling of instability, or significant swelling, seek prompt medical evaluation."
+      "Maintain awareness for any return of pain or new symptoms. Engage in gentle stretches and strengthening exercises to prevent future discomfort. If any acute pain, swelling, or sudden limitation in range of motion reoccurs, seek medical advice."
     ],
     "exercises": [
-      "Pendulum Swings: Lean forward, support your non-painful arm on a table, let the painful arm hang, and gently swing in small circles for 1\u20132 minutes once a day.",
-      "Scapular Retraction (Wall Angels): Stand with back and arms against a wall in a \u201cW\u201d shape. Slide arms up into a \u201cY,\u201d keeping contact with the wall. Perform 2\u20133 sets of 8\u201312 reps.",
-      "Resisted External Rotation: Secure a light resistance band at waist height. With elbow bent 90\u00b0 at your side, rotate your forearm outward. Do 2\u20133 sets of 10\u201315 reps.",
-      "Doorway Pec Stretch: Place your left forearm on a doorframe at shoulder height and gently lean forward until you feel a stretch in the front of your shoulder/chest. Hold 20\u201330 seconds, repeat 3 times.",
-      "Pain-Free Shoulder Elevations: Slowly lift your arms forward (flexion) and to the side (abduction) only as far as comfortable. Perform 2\u20133 sets of 10\u201315 reps each."
+      "Pendulum Swings: Lean forward, support your other arm on a table, let your arm hang, and gently swing in small circles for 1\u00132 minutes once a day.",
+      "Scapular Retraction (Wall Angels): Stand with back and arms against a wall in a 'W' shape. Slide arms up into a 'Y,' keeping contact with the wall. Perform 2-3 sets of 8-12 reps to maintain shoulder mobility and strength.",
+      "Resisted External Rotation: Secure a light resistance band at waist height. With elbow bent 90\u00067 at your side, rotate your forearm outward. Do 2\u00143 sets of 10\u001415 reps.",
+      "Doorway Pec Stretch: Place your forearm on a doorframe at shoulder height and gently lean forward until you feel a stretch in the front of your shoulder/chest. Hold 20-30 seconds, repeat 3 times.",
+      "Pain-Free Shoulder Elevations: Slowly lift your arms forward (flexion) and to the side (abduction) only as far as comfortable. Perform 2\u00143 sets of 10\u001415 reps each to ensure shoulder function remains optimal."
     ]
   }
 }
