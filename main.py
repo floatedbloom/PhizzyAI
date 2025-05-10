@@ -33,7 +33,7 @@ st.markdown(
     }
     </style>
     <div class="header">Welcome to PhizzyAI</div>
-    <div class="subheader">Your Virtual Physical Therapist and Wellness Assistant</div>
+    <div class="subheader">Your Virtual Physical Therapist</div>
     """,
     unsafe_allow_html=True,
 )
@@ -43,7 +43,7 @@ col1, col2 = st.columns([0.5, 1], gap="medium")
 
 # Render body diagram in the first column
 with col1:
-    st.header("Body Diagram")
+    st.header("Interactive Diagram")
     render_body_diagram()
 
 # Render chatbot in the second column
