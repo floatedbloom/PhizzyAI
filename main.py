@@ -4,7 +4,7 @@ from chatbot import chatbot
 
 # Set page configuration
 st.set_page_config(
-    page_title="PhizzyAI - Your Virtual Physical Therapist",
+    page_title="Phizzy - Your Virtual Physical Therapist",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
@@ -48,5 +48,5 @@ with col1:
 
 # Render chatbot in the second column
 with col2:
-    st.header("Chat with PhizzyAI")
+    st.header("Chat with Phizzy")
     chatbot()
