@@ -127,14 +127,17 @@ def chatbot():
     # Voice query handling
     if st.button("Spoken Query 🎤") and not st.session_state.processing_voice:
         st.session_state.processing_voice = True
-        
+
         prompt = get_audio_input()
         if prompt:
             # Add user message to history immediately
             st.session_state.chat_history.append({"role": "user", "content": prompt})
-            
+
             # Force a rerun to display the user message first
             st.rerun()
+        else:
+            # Reset the processing flag if no input was understood
+            st.session_state.processing_voice = False
     
     # Process voice response after user message is displayed
     if st.session_state.processing_voice and st.session_state.chat_history:
