@@ -1,8 +1,8 @@
 import streamlit as st
+from body_diagram import render_body_diagram
 
 st.title("PhizzyAI")
 
-st.write("Placeholder for the body diagram")
+render_body_diagram()
 
 st.write("Placeholder for the chatbot")
-
