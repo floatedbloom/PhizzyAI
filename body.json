@@ -1,21 +1,63 @@
 {
-  "pain points": ["right shoulder", "left thigh"],
-  "pain level": [5, 3],
-  "exercises": ["shoulder stretch", "thigh extension"],
-  "warnings": ["If pain persists, consult a physician."],
-  "actual query response": ["You reported pain in the right shoulder and left thigh. Suggested exercises are shoulder stretch and thigh extension. If pain persists, consult a physician."]
-}
-{
-    "right trap": {
-        "pain_points": ["stiffness", "soreness"],
-        "pain_level": "8",
-        "warnings": ["Avoid heavy lifting", "Consult a doctor if pain persists"],
-        "exercises": ["Shoulder shrugs", "Neck stretches"]
-    },
-    "right shoulder": {
-        "pain_points": ["sharp pain", "limited mobility"],
-        "pain_level": "severe",
-        "warnings": ["Seek immediate medical attention if swelling occurs"],
-        "exercises": ["Arm circles", "Pendulum swings"]
-    }
+  "right shoulder": {
+    "pain_points": [
+      "soreness on top of shoulder",
+      "ache during overhead motion",
+      "mild stiffness after swimming"
+    ],
+    "pain_level": "5",
+    "warnings": [
+      "If you experience sharp or worsening pain during any movement, stop immediately and rest.",
+      "If pain persists beyond 7 days or you notice decreased strength or range of motion, consult a healthcare professional.",
+      "If you develop numbness, tingling, or a sensation of instability in the arm, seek prompt medical evaluation."
+    ],
+    "exercises": [
+      "Pendulum Swings: Lean forward with your non-painful arm supported on a table. Let the painful arm hang and gently swing it in small circles for 1\u20132 minutes.",
+      "Resisted External Rotation: Attach a light resistance band at waist height. With elbow bent 90\u00b0 and tucked at your side, rotate your forearm outward. Do 2\u20133 sets of 10\u201315 reps.",
+      "Cross-Body Stretch: Bring the painful arm across your chest and use the opposite hand to pull it closer. Hold for 20\u201330 seconds, repeat 3 times.",
+      "Doorway Pec Stretch: Stand in a doorway with elbow and shoulder at 90\u00b0. Place your forearm on the frame and gently lean forward until you feel a stretch in the front shoulder/chest. Hold 20\u201330 seconds, repeat 3 times.",
+      "Scapular Retraction (Wall Angels): Stand with your back against a wall, arms in a \u201cW\u201d shape. Slide your arms upward into a \u201cY,\u201d keeping wrists and elbows in contact with the wall. Perform 2\u20133 sets of 8\u201312 reps."
+    ]
+  },
+  "left thigh": {
+    "pain_points": [
+      "dull ache along the quadriceps",
+      "discomfort with bending or walking"
+    ],
+    "pain_level": "5",
+    "warnings": [
+      "If you experience significant swelling, bruising, or inability to bear weight, seek medical attention.",
+      "If pain worsens or persists beyond 5\u20137 days, consult a healthcare professional.",
+      "If you develop numbness, tingling, or severe weakness in the leg, seek prompt evaluation."
+    ],
+    "exercises": [
+      "Standing Quadriceps Stretch: Stand on one leg, pull your opposite heel toward your glutes, keeping knees close. Hold 20\u201330 seconds, repeat 3 times.",
+      "Hamstring Stretch: Lie on your back, loop a towel around your foot and straighten your leg overhead until you feel a stretch. Hold 20\u201330 seconds, repeat 3 times.",
+      "Straight Leg Raises: Lie on your back with one knee bent and the other straight. Lift the straight leg to hip height, hold 2 seconds, then lower slowly. Perform 2\u20133 sets of 10\u201315 reps.",
+      "Glute Bridge: Lie on your back with knees bent and feet flat. Lift hips until your body forms a straight line, squeeze glutes, hold 2\u20133 seconds, then lower. Perform 2\u20133 sets of 10\u201312 reps.",
+      "Foam Roller Quadriceps Massage: Lie face down, place a foam roller under your thigh, and roll gently from hip to knee for 1\u20132 minutes."
+    ]
+  },
+  "right thigh": {
+    "pain_points": [
+      "no current discomfort during walking or bending",
+      "full range of motion without stiffness"
+    ],
+    "pain_level": "1",
+    "warnings": [
+      "If you notice any return of pain, swelling or bruising, stop activity and rest.",
+      "If discomfort persists beyond 2\u20133 days after resuming exercise, consult a healthcare professional.",
+      "If you develop numbness, tingling or weakness in the leg, seek prompt medical evaluation."
+    ],
+    "exercises": [
+      "Standing Quadriceps Stretch: Stand on one leg, pull your opposite heel toward your glutes, keep knees close. Hold 20\u201330 seconds, repeat 3 times per side.",
+      "Hamstring Stretch: Lie on your back, loop a towel around your foot, straighten your leg toward the ceiling until you feel a gentle stretch. Hold 20\u201330 seconds, repeat 3 times per side.",
+      "Straight Leg Raises: Lie on your back with one knee bent and the other straight. Lift the straight leg to hip height, hold 2 seconds, then lower slowly. Perform 2\u20133 sets of 10\u201315 reps per side.",
+      "Foam Roller Quadriceps Massage: Lie face down, place a foam roller under your thigh, and roll gently from hip to knee for 1\u20132 minutes per side.",
+      "Glute Bridge: Lie on your back with knees bent and feet flat. Lift hips until your body forms a straight line, squeeze glutes, hold 2\u20133 seconds, then lower. Perform 2\u20133 sets of 10\u201312 reps."
+    ]
+  },
+  "HISTORY":{
+
+  }
 }

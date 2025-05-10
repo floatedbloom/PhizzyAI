@@ -28,13 +28,21 @@ async def generate_chat_analysis(user_input: str, json: str) -> str:
         "- Suggested actions or exercises.\n"
         "- Any necessary warnings or advice to seek medical attention if applicable.\n"
         "Create a JSON object with the following structure:\n"
-        "{\n 'pain points: [(names of the muscle groups)], 'pain level':[(pain level for each muscle group mapped by index)] ''"
-        "'exercises': [(exercise name)], 'warnings': [(warning message)] }\n 'actual query response': [(actual query response)] }\n}"
-        "Make sure to include the muscle groups in the response. "
+        "{\n"
+        "    \"muscle_group_name\": {\n"
+        "        \"pain_points\": [\"symptom1\", \"symptom2\", ...],\n"
+        "        \"pain_level\": \"number from 1-10\",\n"
+        "        \"warnings\": [\"warning1\", \"warning2\", ...],\n"
+        "        \"exercises\": [\"exercise1\", \"exercise2\", ...]\n"
+        "    },\n"
+        "    \"actual query response\": [\"your complete response to user in natural language\"]\n"
+        "}\n"
+        "Make sure to use the correct muscle group names as keys. "
         "The muscle groups are: right trap, right shoulder, right chest, right bicep, right forearm, "
         "right oblique, left trap, left shoulder, left chest, left bicep, left forearm, left oblique, "
         "abs, groin, right thigh, left thigh, right calf, left calf.\n"
-        "The pain level should be a number from 1 to 10, where 1 is no pain and 10 is extreme pain. "
+        "The pain level should be a number from 1 to 10 as a string, where 1 is minimal pain and 10 is extreme pain. "
+        "The pain_points should describe the specific symptoms (e.g., stiffness, soreness, sharp pain). "
         "The exercises should be specific to the muscle groups mentioned. "
         "The warnings should be clear and concise, indicating if the user should seek medical attention.\n"
         "Please provide a detailed and informative response."
@@ -67,9 +75,16 @@ def chatbot():
     json_path = "body.json"
     if os.path.exists(json_path):
         with open(json_path, "r") as f:
-            body_json = f.read()
+            try:
+                body_data = json.load(f)
+            except json.JSONDecodeError:
+                body_data = {}
     else:
-        body_json = "{}"
+        body_data = {}
+    
+    # Convert to string for passing to the LLM
+    body_json = json.dumps(body_data)
+    
     chatbox = st.container(height=800)
     prompt = st.text_input("Text Query:")
     if prompt:
@@ -77,8 +92,34 @@ def chatbot():
             st.markdown(prompt)
         with st.spinner("Analyzing your input..."):
             response = asyncio.run(generate_chat_analysis(prompt, body_json))
+            try:
+                response_json = json.loads(response)
+                
+                # Extract and handle "actual query response"
+                actual_response = response_json.pop("actual query response", ["No response found"])
+                if isinstance(actual_response, list):
+                    actual_response = "\n".join(actual_response)
+                
+                # Update existing JSON data with new info from response
+                for muscle_group, info in response_json.items():
+                    if muscle_group in body_data:
+                        # Update existing muscle group data
+                        body_data[muscle_group].update(info)
+                    else:
+                        # Add new muscle group data
+                        body_data[muscle_group] = info
+                
+                # Save the updated JSON to file
+                with open(json_path, "w") as f:
+                    json.dump(body_data, f, indent=2)
+                    
+            except Exception as e:
+                st.error(f"Error processing response: {e}")
+                actual_response = response  # fallback to raw response if not JSON
+                
         with chatbox.chat_message("assistant"):
-            st.markdown(response)
+            st.markdown(actual_response)
+    
     if st.button("Spoken Query 🎤"):
         prompt = get_audio_input()
         if prompt:
@@ -86,5 +127,30 @@ def chatbot():
                 st.markdown(prompt)
             with st.spinner("Analyzing your input..."):
                 response = asyncio.run(generate_chat_analysis(prompt, body_json))
+                try:
+                    response_json = json.loads(response)
+                    
+                    # Extract and handle "actual query response"
+                    actual_response = response_json.pop("actual query response", ["No response found"])
+                    if isinstance(actual_response, list):
+                        actual_response = "\n".join(actual_response)
+                    
+                    # Update existing JSON data with new info from response
+                    for muscle_group, info in response_json.items():
+                        if muscle_group in body_data:
+                            # Update existing muscle group data
+                            body_data[muscle_group].update(info)
+                        else:
+                            # Add new muscle group data
+                            body_data[muscle_group] = info
+                    
+                    # Save the updated JSON to file
+                    with open(json_path, "w") as f:
+                        json.dump(body_data, f, indent=2)
+                        
+                except Exception as e:
+                    st.error(f"Error processing response: {e}")
+                    actual_response = response
+                    
             with chatbox.chat_message("assistant"):
-                st.markdown(response)
+                st.markdown(actual_response)
