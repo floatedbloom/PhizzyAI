@@ -39,6 +39,42 @@ def render_body_diagram():
         st.session_state.highlighted_image = Image.open(image_path).convert("RGBA").resize((display_width, display_height))
     mask = Image.open(mask_path).convert("RGB").resize((display_width, display_height))
 
+    # Add color selector for pain level
+    color_option = st.radio(
+        "Select pain level color:",
+        ["Red (High Pain)", "Orange (Medium Pain)", "Grey (No Pain)"],
+        index=0,
+        horizontal=True
+    )
+    color_map = {
+        "Red (High Pain)": ((255, 0, 0, 180), '8'),
+        "Orange (Medium Pain)": ((255, 165, 0, 180), '5'),
+        "Grey (No Pain)": ((128, 128, 128, 180), '1')
+    }
+    painlevel_to_color = {
+        '8': (255, 0, 0, 180),
+        '5': (255, 165, 0, 180),
+        '1': (128, 128, 128, 180),
+        '0': (128, 128, 128, 180),
+        '': (128, 128, 128, 180),
+        None: (128, 128, 128, 180)
+    }
+    highlight_color, pain_level = color_map[color_option]
+
+    # Pre-highlight muscles based on body.json pain_level
+    image_pixels = st.session_state.highlighted_image.load()
+    mask_pixels = mask.load()
+    for hex_color, muscle_name in MUSCLE_GROUPS.items():
+        if muscle_name in body_data:
+            pl = str(body_data[muscle_name].get('pain_level', ''))
+            color = painlevel_to_color.get(pl, (128, 128, 128, 180))
+            # Find all pixels in mask matching this muscle's color
+            rgb = tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
+            for i in range(display_width):
+                for j in range(display_height):
+                    if mask_pixels[i, j] == rgb:
+                        image_pixels[i, j] = color
+
     st.write("Click on the body diagram below:")
     result = ic.streamlit_image_coordinates(
         st.session_state.highlighted_image,
@@ -89,28 +125,6 @@ def render_body_diagram():
 
         else:
             st.write("No data available for this body part.")
-
-        # Update JSON: set pain_level to '8' for this muscle
-        if body_part in MUSCLE_GROUPS:
-            muscle_name = MUSCLE_GROUPS[hex_color]
-            if muscle_name in body_data:
-                body_data[muscle_name]['pain_level'] = '8'
-            else:
-                body_data[muscle_name] = {
-                    'pain_points': [],
-                    'pain_level': '8',
-                    'warnings': [],
-                    'exercises': []
-                }
-            with open("body.json", "w") as f:
-                json.dump(body_data, f, indent=2)
-            # Toggle selection
-            if muscle_name in st.session_state.selected_muscles:
-                st.session_state.selected_muscles.remove(muscle_name)
-            else:
-                st.session_state.selected_muscles.add(muscle_name)
-            st.experimental_rerun()
-            st.write(f"You clicked on: **{muscle_name.title()}**")
 
 #function to return pain points from highleted image
 def get_pain_points_from_image():
