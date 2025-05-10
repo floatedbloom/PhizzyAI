@@ -36,12 +36,13 @@ def get_audio_input():
     with sr.Microphone() as source:
         st.write("Listening... Please speak now.")
         try:
-            audio = recognizer.listen(source, phrase_time_limit=500)
+            recognizer.adjust_for_ambient_noise(source)
+            audio = recognizer.listen(source, phrase_time_limit=5)
             st.write("Processing your input...")
-            return recognizer.recognize_google(audio)
+            text = recognizer.recognize_google(audio)
+            return text
         except sr.UnknownValueError:
             st.write("Sorry, I could not understand the audio.")
-            return ""
         except sr.RequestError as e:
             st.write(f"Could not request results; {e}")
-            return ""
+    return ""
