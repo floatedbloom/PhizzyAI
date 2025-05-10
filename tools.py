@@ -1,6 +1,8 @@
 from openai import AsyncOpenAI
 from dotenv import load_dotenv
 import os
+import speech_recognition as sr
+import streamlit as st
 
 load_dotenv()
 client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -28,3 +30,18 @@ async def generate_chat_analysis(user_input: str) -> str:
         input=[{'role': 'user', 'content': content}],
     )
     return response.output_text
+
+def get_audio_input():
+    recognizer = sr.Recognizer()
+    with sr.Microphone() as source:
+        st.write("Listening... Please speak now.")
+        try:
+            audio = recognizer.listen(source, phrase_time_limit=500)
+            st.write("Processing your input...")
+            return recognizer.recognize_google(audio)
+        except sr.UnknownValueError:
+            st.write("Sorry, I could not understand the audio.")
+            return ""
+        except sr.RequestError as e:
+            st.write(f"Could not request results; {e}")
+            return ""
