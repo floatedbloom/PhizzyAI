@@ -1,21 +1,23 @@
 {
-  "pain points": ["right shoulder", "left thigh"],
-  "pain level": [5, 3],
-  "exercises": ["shoulder stretch", "thigh extension"],
-  "warnings": ["If pain persists, consult a physician."],
-  "actual query response": ["You reported pain in the right shoulder and left thigh. Suggested exercises are shoulder stretch and thigh extension. If pain persists, consult a physician."]
-}
-{
+  "summary": {
+    "pain points": ["right shoulder", "left thigh"],
+    "pain level": [5, 3],
+    "exercises": ["shoulder stretch", "thigh extension"],
+    "warnings": ["If pain persists, consult a physician."],
+    "actual query response": ["You reported pain in the right shoulder and left thigh. Suggested exercises are shoulder stretch and thigh extension. If pain persists, consult a physician."]
+  },
+  "muscle_details": {
     "right trap": {
-        "pain_points": ["stiffness", "soreness"],
-        "pain_level": "8",
-        "warnings": ["Avoid heavy lifting", "Consult a doctor if pain persists"],
-        "exercises": ["Shoulder shrugs", "Neck stretches"]
+      "pain_points": ["stiffness", "soreness"],
+      "pain_level": "8",
+      "warnings": ["Avoid heavy lifting", "Consult a doctor if pain persists"],
+      "exercises": ["Shoulder shrugs", "Neck stretches"]
     },
     "right shoulder": {
-        "pain_points": ["sharp pain", "limited mobility"],
-        "pain_level": "severe",
-        "warnings": ["Seek immediate medical attention if swelling occurs"],
-        "exercises": ["Arm circles", "Pendulum swings"]
+      "pain_points": ["sharp pain", "limited mobility"],
+      "pain_level": "severe",
+      "warnings": ["Seek immediate medical attention if swelling occurs"],
+      "exercises": ["Arm circles", "Pendulum swings"]
     }
+  }
 }
