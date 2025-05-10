@@ -58,5 +58,25 @@
       "Bodyweight Squats (Pain-Free Range): Stand feet hip-width, squat only as far as you can without pain, return to standing. Perform 2\u20133 sets of 10\u201312 reps."
     ]
   },
-  "HISTORY": {}
+  "HISTORY": {},
+  "left chest": {
+    "pain_points": [
+      "dull to sharp pain in left pectoral region during breaststroke pull",
+      "aching or tightness after swimming",
+      "pain aggravated by pressing arms together or reaching across chest"
+    ],
+    "pain_level": "5",
+    "warnings": [
+      "If you experience chest pain with shortness of breath, sweating, dizziness or nausea, seek emergency care immediately.",
+      "If pain is sharp, severe, or associated with bruising or swelling of the chest, stop activity and see a healthcare professional.",
+      "If discomfort persists beyond 7 days despite rest and self-care, consult a physical therapist or physician."
+    ],
+    "exercises": [
+      "Doorway Pec Stretch: Stand in a doorway, place forearm on frame at shoulder height, lean forward until you feel a gentle stretch in the front of your chest. Hold 20\u201330 seconds, repeat 3 times each side.",
+      "Foam Roller Chest Opener: Lie face-up on a foam roller placed lengthwise along your spine, let arms fall out to sides, palms up. Breathe deeply for 1\u20132 minutes.",
+      "Isometric Adduction Press: Stand or sit, press your palms together in front of your sternum at shoulder height, hold 5 seconds, relax. Repeat 10 times.",
+      "Scapular Retraction: Sit or stand tall, squeeze shoulder blades together as if pinching a pencil between them, hold 5 seconds, release. Repeat 10\u201315 times.",
+      "Cross-Body Shoulder Stretch: Bring your left arm across your chest and use your right hand to gently pull it closer. Hold 20\u201330 seconds, repeat 3 times."
+    ]
+  }
 }
