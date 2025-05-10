@@ -39,6 +39,37 @@ def render_body_diagram():
         st.session_state.highlighted_image = Image.open(image_path).convert("RGBA").resize((display_width, display_height))
     mask = Image.open(mask_path).convert("RGB").resize((display_width, display_height))
 
+    # Define pain level to color mapping
+    painlevel_to_color = {
+        '1': (128, 128, 128, 180),  # Gray for pain levels 1-3
+        '2': (128, 128, 128, 180),
+        '3': (128, 128, 128, 180),
+        '4': (255, 165, 0, 180),  # Orange for pain levels 4-7
+        '5': (255, 165, 0, 180),
+        '6': (255, 165, 0, 180),
+        '7': (255, 165, 0, 180),
+        '8': (255, 0, 0, 180),    # Red for pain levels 8-10
+        '9': (255, 0, 0, 180),
+        '10': (255, 0, 0, 180),
+        '0': (128, 128, 128, 180),
+        '': (128, 128, 128, 180),
+        None: (128, 128, 128, 180)
+    }
+
+    # Pre-highlight muscles based on body.json pain_level
+    image_pixels = st.session_state.highlighted_image.load()
+    mask_pixels = mask.load()
+    for hex_color, muscle_name in MUSCLE_GROUPS.items():
+        if muscle_name in body_data:
+            pl = str(body_data[muscle_name].get('pain_level', ''))
+            color = painlevel_to_color.get(pl, (128, 128, 128, 180))
+            # Find all pixels in mask matching this muscle's color
+            rgb = tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
+            for i in range(display_width):
+                for j in range(display_height):
+                    if mask_pixels[i, j] == rgb:
+                        image_pixels[i, j] = color
+
     st.write("Click on the body diagram below:")
     result = ic.streamlit_image_coordinates(
         st.session_state.highlighted_image,
