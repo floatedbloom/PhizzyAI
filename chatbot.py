@@ -36,7 +36,7 @@ async def generate_chat_analysis(user_input: str) -> str:
 def get_audio_input():
     recognizer = sr.Recognizer()
     with sr.Microphone() as source:
-        st.write("Listening... Please speak now.")
+        st.write("Listening... Please speak now 🗣️")
         try:
             recognizer.adjust_for_ambient_noise(source)
             audio = recognizer.listen(source, phrase_time_limit=5)
@@ -59,7 +59,7 @@ def chatbot():
             response = asyncio.run(generate_chat_analysis(prompt))
         with chatbox.chat_message("assistant"):
             st.markdown(response)
-    if st.button("Spoken Query"):
+    if st.button("Spoken Query 🎤"):
         prompt = get_audio_input()
         if prompt:
             with chatbox.chat_message("user"):
