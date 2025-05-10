@@ -19,6 +19,27 @@ def chatbot():
     if "processing_voice" not in st.session_state:
         st.session_state.processing_voice = False
     
+    # Load necessary Font Awesome icons in the header
+    st.markdown("""
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <style>
+            .chat-message-container .stretches-message {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+            details summary {
+                user-select: none;
+            }
+            details summary:hover {
+                text-decoration: underline;
+            }
+            iframe {
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+        </style>
+    """, unsafe_allow_html=True)
+    
     # Load body.json if it exists
     json_path = "body.json"
     if os.path.exists(json_path):
@@ -103,7 +124,11 @@ def chatbot():
         role = message["role"]
         content = message["content"]
         with chatbox.chat_message(role):
-            st.markdown(content)
+            # Check if the message is an HTML-formatted stretches message
+            if "<div style=" in content and "Stretches for" in content:
+                st.markdown(content, unsafe_allow_html=True)
+            else:
+                st.markdown(content)
     
     # Display any new MCP messages
     if st.session_state.mcp_messages:
@@ -113,7 +138,11 @@ def chatbot():
             
             # Display tool message
             with chatbox.chat_message("assistant"):
-                st.markdown(message)
+                # Check if the message contains HTML (stretches message)
+                if "<div style=" in message and "Stretches for" in message:
+                    st.markdown(message, unsafe_allow_html=True)
+                else:
+                    st.markdown(message)
         
         # Clear MCP messages after adding to history and displaying
         st.session_state.mcp_messages = []
