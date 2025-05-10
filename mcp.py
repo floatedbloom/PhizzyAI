@@ -68,11 +68,28 @@ class MCPServer:
         # Get stretches summary from the muscle_stretch_summaries
         stretches_summary = muscle_stretch_summaries.get(muscle, f"No specific stretches found for {muscle}")
         
-        message = f"""**Stretches for {muscle}**
+        # Create message with dark theme for better contrast and without iframe (due to X-Frame-Options restrictions)
+        message = f"""
+<div style="background-color: #1e3d2a; border-left: 4px solid #28a745; padding: 15px; margin-bottom: 15px; border-radius: 4px;">
+    <div style="display: flex; align-items: top;">
+        <div style="color: #28a745; font-size: 24px; margin-right: 10px;">
+            <i class="fas fa-info-circle"></i> <!-- Font Awesome info icon -->
+        </div>
+        <div>
+            <strong style="color: #28a745;">Stretches for {muscle}</strong>
+            <div style="color: #ffffff;">{stretches_summary}</div>
+        </div>
+    </div>
+</div>
 
-{stretches_summary}
-
-[Click here for some demonstrations and stretches to help you practice]({main_url})
+<div style="text-align: center; margin-top: 15px; margin-bottom: 20px;">
+    <a href="{main_url}" target="_blank" style="display: inline-block; background-color: #28a745; color: white; text-decoration: none; padding: 10px 20px; border-radius: 4px; font-weight: bold;">
+        <i class="fas fa-external-link-alt"></i> View Stretches on MuscleWiki
+    </a>
+    <p style="margin-top: 10px; font-size: 0.8em; color: #666;">
+        Note: The website cannot be embedded due to security restrictions.
+    </p>
+</div>
 """
         
         await self.chat_callback(message)

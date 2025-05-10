@@ -40,22 +40,22 @@
   },
   "right thigh": {
     "pain_points": [
-      "mild to moderate soreness on front of thigh after swimming with fins",
-      "tenderness when contracting quadriceps (knee extension)",
-      "muscle fatigue or cramping during kicking"
+      "mild to moderate soreness on the front of the thigh",
+      "tenderness when contracting the quadriceps (knee extension)",
+      "muscle fatigue or cramping during activities such as kicking or walking"
     ],
     "pain_level": "4",
     "warnings": [
-      "If you notice significant swelling, bruising, or can\u2019t bear weight, seek medical attention immediately.",
+      "If you notice significant swelling, bruising, or cannot bear weight, seek medical attention immediately.",
       "If pain worsens or does not improve after 5\u20137 days of rest and self-care, consult a healthcare professional.",
-      "If you develop numbness, tingling or severe weakness in the leg, seek prompt evaluation."
+      "If you develop numbness, tingling, or severe weakness in the leg, seek prompt evaluation."
     ],
     "exercises": [
       "Standing Quadriceps Stretch: Stand on one leg, pull the opposite heel toward your glutes, keeping knees close. Hold 20\u201330 seconds, repeat 3 times per side.",
       "Foam Roller Quadriceps Massage: Lie face down, place a foam roller under your right thigh, and roll gently from hip to knee for 1\u20132 minutes.",
-      "Straight Leg Raises: Lie on your back, one knee bent, other leg straight. Lift the straight leg to hip height, hold 2 seconds, then lower slowly. Do 2\u20133 sets of 10\u201315 reps.",
-      "Prone Hip Flexor Stretch: Lie face down, prop on forearms. Gently squeeze your right glute to tilt pelvis, stretching front of thigh. Hold 20\u201330 seconds, repeat 3 times.",
-      "Bodyweight Squats (Pain-Free Range): Stand feet hip-width, squat only as far as you can without pain, return to standing. Perform 2\u20133 sets of 10\u201312 reps."
+      "Straight Leg Raises: Lie on your back with one knee bent and the other leg straight. Lift the straight leg to hip height, hold for 2 seconds, then lower slowly. Perform 2\u20133 sets of 10\u201315 reps.",
+      "Prone Hip Flexor Stretch: Lie face down, prop on forearms, gently squeeze your right glute to tilt the pelvis and stretch the front of your thigh. Hold 20\u201330 seconds, repeat 3 times.",
+      "Bodyweight Squats (Pain-Free Range): Stand feet hip-width apart, squat only as far as you can without pain, then return to standing. Perform 2\u20133 sets of 10\u201312 reps."
     ]
   },
   "HISTORY": {},
@@ -77,6 +77,101 @@
       "Isometric Adduction Press: Stand or sit, press your palms together in front of your sternum at shoulder height, hold 5 seconds, relax. Repeat 10 times.",
       "Scapular Retraction: Sit or stand tall, squeeze shoulder blades together as if pinching a pencil between them, hold 5 seconds, release. Repeat 10\u201315 times.",
       "Cross-Body Shoulder Stretch: Bring your left arm across your chest and use your right hand to gently pull it closer. Hold 20\u201330 seconds, repeat 3 times."
+    ]
+  },
+  "right forearm": {
+    "pain_points": [
+      "soreness during writing",
+      "pain when gripping a pen or pencil",
+      "tightness in the forearm muscles after short writing sessions"
+    ],
+    "pain_level": "4",
+    "warnings": [
+      "If you experience numbness or tingling in the fingers, seek medical attention.",
+      "If pain worsens or does not improve after 7 days of rest and self\u2010care, consult a healthcare professional.",
+      "If you notice significant weakness in your grip or loss of wrist motion, see a professional promptly."
+    ],
+    "exercises": [
+      "Wrist Extension Stretch: Extend your right arm with palm facing down. Use your left hand to gently pull the fingers back toward you until you feel a stretch on top of your forearm. Hold 20\u201330 seconds, repeat 3 times.",
+      "Wrist Flexion Stretch: Extend your right arm with palm facing up. Gently pull your fingers down and toward you with your left hand until you feel a stretch in the underside of your forearm. Hold 20\u201330 seconds, repeat 3 times.",
+      "Forearm Pronation/Supination: Hold a lightweight or a hammer handle vertically. Rotate your forearm so your palm faces up, then down. Perform 2 sets of 10 slow repetitions each direction.",
+      "Towel-Wringing Exercise: Roll up a small towel. Grasp each end and twist as if you\u2019re wringing water out, first clockwise, then counter-clockwise. Do 2 sets of 10 twists each way.",
+      "Self-Massage: Use your thumb to apply gentle, sustained pressure along the length of the forearm muscles (from elbow to wrist) for 1\u20132 minutes to release tension."
+    ]
+  },
+  "left calf": {
+    "pain_points": [
+      "feeling of tightness in the back of the lower leg",
+      "mild discomfort when dorsiflexing the ankle",
+      "muscle stiffness after prolonged standing or exercise"
+    ],
+    "pain_level": "3",
+    "warnings": [
+      "If you experience severe pain, significant swelling or bruising, or cannot bear weight, seek medical attention immediately.",
+      "If calf tightness or discomfort persists beyond 5\u20137 days despite self-care, consult a healthcare professional.",
+      "If you notice numbness, tingling, or changes in skin color (paleness or redness), seek prompt evaluation."
+    ],
+    "exercises": [
+      "Calf Stretch Against Wall: Stand facing a wall with hands at shoulder height. Step your left leg back, keep the heel down and knee straight. Lean forward until you feel a stretch in the upper calf. Hold 20\u201330 seconds, repeat 3 times.",
+      "Seated Towel Stretch: Sit with legs extended. Loop a towel around the ball of your left foot, gently pull the towel toward you while keeping the knee straight until you feel a stretch. Hold 20\u201330 seconds, repeat 3 times.",
+      "Soleus (Bent-Knee) Calf Stretch: Stand facing a wall, place hands on the wall. Step your left leg back and bend both knees slightly, keeping the heel of the back foot on the ground. Lean in until you feel a stretch lower in the calf. Hold 20\u201330 seconds, repeat 3 times.",
+      "Foam Roller Calf Release: Sit on the floor with a foam roller under your left calf. Support yourself with your hands and roll slowly from just above the ankle to below the knee for 1\u20132 minutes, pausing on tender spots.",
+      "Heel Raises: Stand feet hip-width apart, holding a chair for balance. Rise onto your toes, squeeze calves at the top for 2 seconds, then lower slowly. Perform 2\u20133 sets of 12\u201315 reps."
+    ]
+  },
+  "right calf": {
+    "pain_points": [
+      "feeling of tightness in the back of the lower leg",
+      "mild discomfort when dorsiflexing the ankle",
+      "muscle stiffness after prolonged standing or exercise"
+    ],
+    "pain_level": "3",
+    "warnings": [
+      "If you experience severe pain, significant swelling or bruising, or cannot bear weight, seek medical attention immediately.",
+      "If calf tightness or discomfort persists beyond 5\u007f7 days despite self-care, consult a healthcare professional.",
+      "If you notice numbness, tingling, or changes in skin color (paleness or redness), seek prompt evaluation."
+    ],
+    "exercises": [
+      "Calf Stretch Against Wall: Stand facing a wall with hands at shoulder height. Step your right leg back, keep the heel down and knee straight. Lean forward until you feel a stretch in the upper calf. Hold 20\u00007f30 seconds, repeat 3 times.",
+      "Seated Towel Stretch: Sit with legs extended. Loop a towel around the ball of your right foot, gently pull the towel toward you while keeping the knee straight until you feel a stretch. Hold 20\u00007f30 seconds, repeat 3 times.",
+      "Soleus (Bent-Knee) Calf Stretch: Stand facing a wall, place hands on the wall. Step your right leg back and bend both knees slightly, keeping the heel of the back foot on the ground. Lean in until you feel a stretch lower in the calf. Hold 20\u00007f30 seconds, repeat 3 times.",
+      "Foam Roller Calf Release: Sit on the floor with a foam roller under your right calf. Support yourself with your hands and roll slowly from just above the ankle to below the knee for 1\u007f2 minutes, pausing on tender spots.",
+      "Heel Raises: Stand feet hip-width apart, holding a chair for balance. Rise onto your toes, squeeze calves at the top for 2 seconds, then lower slowly. Perform 2\u00007f3 sets of 12\u00007f15 reps."
+    ]
+  },
+  "abs": {
+    "pain_points": [
+      "general tightness in the abdominal muscles",
+      "discomfort during core exercises",
+      "soreness when bending or twisting"
+    ],
+    "pain_level": "4",
+    "warnings": [
+      "If you experience sharp or severe abdominal pain, nausea, or vomiting, seek medical attention promptly.",
+      "If abdominal pain is accompanied by any signs of hernia (a visible bulge or sensation of weakness), consult a healthcare professional immediately.",
+      "If discomfort persists beyond 7 days despite self-care, consider consulting a physical therapist."
+    ],
+    "exercises": []
+  },
+  "additional Tool use": "I will send specific abdominal stretches for you.",
+  "right arm": {
+    "pain_points": [
+      "soreness",
+      "ache during motion",
+      "mild stiffness"
+    ],
+    "pain_level": "5",
+    "warnings": [
+      "If you experience sharp or worsening pain during any movement, stop immediately and rest.",
+      "If pain persists beyond 7 days or you notice decreased strength or range of motion, consult a healthcare professional.",
+      "If you develop numbness, tingling, or a sensation of instability in the arm, seek prompt medical evaluation."
+    ],
+    "exercises": [
+      "Pendulum Swings: Lean forward with your non-painful arm supported on a table. Let the painful arm hang and gently swing it in small circles for 1-2 minutes.",
+      "Resisted External Rotation: Attach a light resistance band at waist height. With elbow bent 90\u00b0 and tucked at your side, rotate your forearm outward. Do 2-3 sets of 10-15 reps.",
+      "Cross-Body Stretch: Bring the painful arm across your chest and use the opposite hand to pull it closer. Hold for 20-30 seconds, repeat 3 times.",
+      "Doorway Pec Stretch: Stand in a doorway with elbow and shoulder at 90\u00b0. Place your forearm on the frame and gently lean forward until you feel a stretch in the front shoulder/chest. Hold 20-30 seconds, repeat 3 times.",
+      "Scapular Retraction (Wall Angels): Stand with your back against a wall, arms in a \u201cW\u201d shape. Slide your arms upward into a \u201cY,\u201d keeping wrists and elbows in contact with the wall. Perform 2-3 sets of 8-12 reps."
     ]
   }
 }
