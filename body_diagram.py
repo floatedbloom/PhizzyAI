@@ -3,24 +3,26 @@ import streamlit_image_coordinates as ic
 import os
 from PIL import Image
 
-# Define a dictionary mapping HEX colors to muscle group names
+# Define a dictionary mapping HEX colors to muscle group names (from colors.txt)
 MUSCLE_GROUPS = {
-    '#ff0000': "Left Forearm",
-    '#0000ff': "Left Upper Arm",
-    '#00ffff': "Left Side",
-    '#ffa500': "Left Thigh",
-    '#00ff00': "Abs",
-    '#ff00ff': "Left Chest",
-    '#ffff00': "Neck",
-    '#008000': "Right Chest",
-    '#800080': "Right Upper Arm",
-    '#808080': "Right Forearm",
-    '#800000': "Right Side",
-    '#808000': "Right Thigh",
-    '#008080': "Left Calf",
-    '#adff2f': "Right Calf",
-    '#ff1493': "Groin",
-    '#a9a9a9': "Other"
+    'ffff00': 'right trap',
+    '00ff00': 'right shoulder',
+    'ff00ff': 'right chest',
+    '0000ff': 'right bicep',
+    'ff0000': 'right forearm',
+    '00fff8': 'right oblique',
+    '2b3d29': 'left trap',
+    'b7ace8': 'left shoulder',
+    '4b5849': 'left chest',
+    '8425d8': 'left bicep',
+    '907389': 'left forearm',
+    'bf93e6': 'left oblique',
+    '67ff00': 'abs',
+    'ff00aa': 'groin',
+    'ff7000': 'right thigh',
+    '816e92': 'left thigh',
+    '67a095': 'right calf',
+    'c3eca7': 'left calf',
 }
 
 def render_body_diagram():
