@@ -1,0 +1,18 @@
+right trap - ffff00
+right shoulder - 00ff00
+right chest - ff00ff
+right bicep  - 0000ff
+right forearm - ff0000
+right oblique - 00fff8
+left trap - 2b3d29
+left shoulder - b7ace8
+left chest - 4b5849
+left bicep  - 8425d8
+left forearm - 907389
+left oblique - bf93e6
+abs - 67ff00
+groin - ff00aa
+right thigh - ff7000
+left thigh - 816e92
+right calf - 67a095
+left calf - c3eca7
