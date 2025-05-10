@@ -1,92 +1,121 @@
 import streamlit as st
-import numpy as np
 import asyncio
-from openai import AsyncOpenAI
-from dotenv import load_dotenv
-import os
 import speech_recognition as sr
-import json
-
-load_dotenv()
-client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
-async def generate_chat_analysis(user_input: str, json: str) -> str:
-    prompt_text = (
-        "You are PhizzyAI, an advanced AI physical therapist. Your role is to analyze user-reported "
-        "pain, discomfort, or physical issues and provide detailed, empathetic, and actionable advice. "
-        "You are highly knowledgeable in anatomy, physical therapy techniques, and rehabilitation exercises. "
-        "When a user describes their symptoms, you will:\n"
-        "1. Identify the potential cause of the issue based on the symptoms described.\n"
-        "2. Suggest specific stretches, exercises, or techniques to alleviate the pain or discomfort.\n"
-        "3. Provide clear warnings if the symptoms described could indicate a serious condition that requires "
-        "immediate medical attention.\n"
-        "4. Always communicate in a professional, empathetic, and easy-to-understand manner.\n\n"
-        f"User Input: {user_input}\n\n"
-        f"preexisting json file structure: {json}"
-        "Your response should include:\n"
-        "- A brief analysis of the symptoms.\n"
-        "- Suggested actions or exercises.\n"
-        "- Any necessary warnings or advice to seek medical attention if applicable.\n"
-        "Create a JSON object with the following structure:\n"
-        "{\n 'pain points: [(names of the muscle groups)], 'pain level':[(pain level for each muscle group mapped by index)] ''"
-        "'exercises': [(exercise name)], 'warnings': [(warning message)] }\n 'actual query response': [(actual query response)] }\n}"
-        "Make sure to include the muscle groups in the response. "
-        "The muscle groups are: right trap, right shoulder, right chest, right bicep, right forearm, "
-        "right oblique, left trap, left shoulder, left chest, left bicep, left forearm, left oblique, "
-        "abs, groin, right thigh, left thigh, right calf, left calf.\n"
-        "The pain level should be a number from 1 to 10, where 1 is no pain and 10 is extreme pain. "
-        "The exercises should be specific to the muscle groups mentioned. "
-        "The warnings should be clear and concise, indicating if the user should seek medical attention.\n"
-        "Please provide a detailed and informative response."
-    )
-    content = [{"type": "input_text", "text": prompt_text}]
-    response = await client.responses.create(
-        model='o4-mini',
-        input=[{'role': 'user', 'content': content}],
-    )
-    return response.output_text
-
-def get_audio_input():
-    recognizer = sr.Recognizer()
-    with sr.Microphone() as source:
-        with st.empty():
-            st.write("Listening... Please speak now 🗣️")
-            try:
-                recognizer.adjust_for_ambient_noise(source)
-                audio = recognizer.listen(source, phrase_time_limit=5)
-                st.write("Processing your input...")
-                text = recognizer.recognize_google(audio)
-                st.write("")
-                return text
-            except sr.UnknownValueError:
-                st.write("Sorry, I could not understand the audio.")
-            except sr.RequestError as e:
-                st.write(f"Could not request results; {e}")
-    return ""
+import os
+from tools import generate_chat_analysis, get_audio_input
 
 def chatbot():
-    # Load body.json
-    json_path = "body.json"
-    if os.path.exists(json_path):
-        with open(json_path, "r") as f:
-            body_json = f.read()
-    else:
-        body_json = "{}"
+    # Initialize chat history if not exists
+    if "chat_history" not in st.session_state:
+        st.session_state.chat_history = []
+    
+    # Initialize MCP messages if not exists
+    st.session_state.setdefault("mcp_messages", [])
+    
+    # Initialize processing flags
+    if "processing_text" not in st.session_state:
+        st.session_state.processing_text = False
+    if "processing_voice" not in st.session_state:
+        st.session_state.processing_voice = False
+    
+    # Handle form submission for text input
+    def handle_text_submit():
+        if st.session_state.text_query and not st.session_state.processing_text:
+            # Get the text from the session state
+            prompt = st.session_state.text_query
+            
+            # Reset the input field
+            st.session_state.text_query = ""
+            
+            # Set processing flag
+            st.session_state.processing_text = True
+            
+            # Add user message to history
+            st.session_state.chat_history.append({"role": "user", "content": prompt})
+            
+            # Indicate reprocessing needed
+            st.session_state.needs_rerun = True
+    
+    # Handle text processing outside form to prevent infinite loops
+    if st.session_state.get("needs_rerun", False) and st.session_state.processing_text:
+        # Reset flag
+        st.session_state.needs_rerun = False
+        
+        # Get the latest user message
+        latest_user_message = next((msg["content"] for msg in reversed(st.session_state.chat_history) 
+                                   if msg["role"] == "user"), None)
+        
+        if latest_user_message:
+            with st.spinner("Analyzing your input..."):
+                # Pass chat history for context
+                response = asyncio.run(generate_chat_analysis(
+                    latest_user_message, 
+                    chat_history=st.session_state.chat_history[:-1]  # Exclude the latest message
+                ))
+            
+            # Add assistant message to history
+            st.session_state.chat_history.append({"role": "assistant", "content": response})
+        
+        # Reset flag
+        st.session_state.processing_text = False
+        st.rerun()
+    
     chatbox = st.container(height=800)
-    prompt = st.text_input("Text Query:")
-    if prompt:
-        with chatbox.chat_message("user"):
-            st.markdown(prompt)
-        with st.spinner("Analyzing your input..."):
-            response = asyncio.run(generate_chat_analysis(prompt, body_json))
-        with chatbox.chat_message("assistant"):
-            st.markdown(response)
-    if st.button("Spoken Query 🎤"):
+    
+    # Display all messages from chat history
+    for message in st.session_state.chat_history:
+        role = message["role"]
+        content = message["content"]
+        with chatbox.chat_message(role):
+            st.markdown(content)
+    
+    # Display any new MCP messages
+    if st.session_state.mcp_messages:
+        for message in st.session_state.mcp_messages:
+            # Add tool message to history
+            st.session_state.chat_history.append({"role": "assistant", "content": message})
+            
+            # Display tool message
+            with chatbox.chat_message("assistant"):
+                st.markdown(message)
+        
+        # Clear MCP messages after adding to history and displaying
+        st.session_state.mcp_messages = []
+        st.rerun()
+    
+    # Text query handling with form
+    with st.form(key="query_form", clear_on_submit=True):
+        text_input = st.text_input("Text Query:", key="text_query")
+        submit_button = st.form_submit_button("Send", on_click=handle_text_submit)
+    
+    # Voice query handling
+    if st.button("Spoken Query 🎤") and not st.session_state.processing_voice:
+        st.session_state.processing_voice = True
+        
         prompt = get_audio_input()
         if prompt:
-            with chatbox.chat_message("user"):
-                st.markdown(prompt)
+            # Add user message to history immediately
+            st.session_state.chat_history.append({"role": "user", "content": prompt})
+            
+            # Force a rerun to display the user message first
+            st.rerun()
+    
+    # Process voice response after user message is displayed
+    if st.session_state.processing_voice and st.session_state.chat_history:
+        latest_user_message = next((msg["content"] for msg in reversed(st.session_state.chat_history) 
+                                    if msg["role"] == "user"), None)
+        
+        if latest_user_message:
             with st.spinner("Analyzing your input..."):
-                response = asyncio.run(generate_chat_analysis(prompt, body_json))
-            with chatbox.chat_message("assistant"):
-                st.markdown(response)
+                # Pass chat history for context
+                response = asyncio.run(generate_chat_analysis(
+                    latest_user_message,
+                    chat_history=st.session_state.chat_history[:-1]  # Exclude the latest message
+                ))
+            
+            # Add assistant message to history
+            st.session_state.chat_history.append({"role": "assistant", "content": response})
+        
+        # Reset flag
+        st.session_state.processing_voice = False
+        st.rerun()

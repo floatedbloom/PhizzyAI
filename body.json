@@ -1,9 +1,9 @@
 {
     "right trap": {
-        "pain_points": ["stiffness", "soreness"],
-        "pain_level": "8",
-        "warnings": ["Avoid heavy lifting", "Consult a doctor if pain persists"],
-        "exercises": ["Shoulder shrugs", "Neck stretches"]
+      "pain_points": ["stiffness", "soreness"],
+      "pain_level": "8",
+      "warnings": ["Avoid heavy lifting", "Consult a doctor if pain persists"],
+      "exercises": ["Shoulder shrugs", "Neck stretches"]
     },
     "right shoulder": {
         "pain_points": ["sharp pain", "limited mobility"],
